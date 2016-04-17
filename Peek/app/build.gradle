@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 'android-N'
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.example.admin.peek"
+        minSdkVersion 22
+        targetSdkVersion 'N'
+        versionCode 1
+        versionName "1.0"
+    }
+    //packaging for arcgis (esry)
+    packagingOptions {
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    //dependency from arcgis (esry)
+    compile 'com.esri.arcgis.android:arcgis-android:10.2.7'
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.+'
+}
